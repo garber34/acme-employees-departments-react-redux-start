@@ -1,7 +1,8 @@
 import React from 'react';
 import Employees from './Employees';
+import {connect} from 'react-redux'
 
-const Department = ({ department, employees, destroyEmployee, removeFromDepartment })=> {
+const Department = ({ department, employees})=> {
     return (
       <li>
         <span className='department-title'>
@@ -10,13 +11,10 @@ const Department = ({ department, employees, destroyEmployee, removeFromDepartme
           })
         </span>
         <Employees
-          department={ department }
-          employees ={ employees }
-          destroyEmployee = { destroyEmployee }
-          removeFromDepartment={ removeFromDepartment }
-        />
+        department={department} />
       </li>
     );
 };
 
-export default Department;
+const stateProps = (state,ownProps) =>({employees:state.employees})
+export default connect(stateProps)(Department);

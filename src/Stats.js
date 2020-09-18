@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux'
 
 const Stats = ({ employees })=> {
   return (
@@ -6,4 +7,7 @@ const Stats = ({ employees })=> {
   );
 };
 
-export default Stats;
+const stateProps = state =>({employees:state.employees})
+
+
+export default connect(stateProps)(Stats)
